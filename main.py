@@ -1,10 +1,8 @@
 # modulos necesarios
 import flet as ft
 
-from Views.Home import HomeView
-from Views.AddBook import AddBookView
-from Views.EditBook import EditBookView
-from Views.ViewBook import ViewBookView
+import routes
+from map_views import Route2View as R2V
 
 from controls import ControlReference
 
@@ -13,80 +11,47 @@ def salir(page):
 
 
 def main(page: ft.Page):
-    page.title = "Gestion de Bibliotecas"
+    # Translate the page.title to English
+    page.title = "Library Management"
 
-    # Establece la aplicación en modo oscuro
     page.theme_mode = "dark"
 
-    # agrega la pagina a un controlador general
+    # add the page to a general controller
     ControlReference.add_control_reference("page", page)
+    R2V.init_map(page)
 
-    # El navbar de la Aplicación
+    # The navbar of the application
     bar = ft.AppBar(
         leading=ft.Icon(ft.icons.BOOK),
         leading_width=40,
-        title=ft.Text("GestiBiblioteca"),
+        title=ft.Text("Library Manager"),
         center_title=False,
         bgcolor=ft.colors.SURFACE_VARIANT,
         actions=[
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text="Salir", checked=False, on_click=lambda _: salir(page)
+                        text="Exit", checked=False, on_click=lambda _: salir(page)
                     ),
                 ]
             ),
         ],
     )
 
-    # Vistas
-    Home = HomeView(page)
-    AddBook = AddBookView(page)
-    EditBook = EditBookView(page)
-    ViewBook = ViewBookView(page)
-
-    # funcion que se ejecuta cada vez que la ruta cambia
+    # function that runs every time the route changes
     def route_change(route):
         page.views.clear()
 
-        # Vista principal
-        page.views.append(
-            ft.View(
-                "/",
-                [bar, Home],
-                scroll=ft.ScrollMode.AUTO,
-            )
-        )
-
-        # Vista de añadir
-        if page.route == "/books/add-book":
-            page.views.append(
-                ft.View(
-                    "/books/add-book",
-                    [bar, AddBook],
-                    scroll=ft.ScrollMode.AUTO,
-                )
-            )
-        # Vista de editar
-        if page.route == "/books/edit-book":
-            page.views.append(
-                ft.View(
-                    "/books/edit-book",
-                    [bar, EditBook],
-                    scroll=ft.ScrollMode.ALWAYS,
-                )
-            )
-        # Vista de ver
-        if page.route == "/books/view-book":
-            page.views.append(
-                ft.View(
-                    "/books/view-book",
-                    [bar, ViewBook],
-                    scroll=ft.ScrollMode.ALWAYS,
-                )
-            )
-        # actualiza la pagina con la nueva vista
-        page.update()
+        page.views.append(R2V.get_view4route(routes.ROOT_PATH, bar)) # Home view
+        
+        if route == routes.ADD_BOOK_PATH:
+            page.views.append(R2V.get_view4route(routes.ADD_BOOK_PATH, bar)) # Add book view
+        elif route == routes.EDIT_BOOK_PATH:
+            page.views.append(R2V.get_view4route(routes.EDIT_BOOK_PATH, bar)) # Edit book view
+        elif route == routes.VIEW_BOOK_PATH:
+            page.views.append(R2V.get_view4route(routes.VIEW_BOOK_PATH, bar)) # View book view
+        
+        page.update() # Refresh the page with the new view
 
     def view_pop(view):
         page.views.pop()
