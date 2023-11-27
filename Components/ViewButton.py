@@ -1,5 +1,5 @@
 from flet import *
-from controls import ControlReference
+from control_reference import ControlReference
 
 # stores requeridas para este componente: EditButton
 from Store.BooksStore import BookStore

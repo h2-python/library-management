@@ -1,5 +1,5 @@
 from flet import *
-from controls import ControlReference
+from control_reference import ControlReference
 
 #  lladamo al store de libros
 from Store.BooksStore import BookStore

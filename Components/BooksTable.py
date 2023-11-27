@@ -1,5 +1,5 @@
 from flet import *
-from controls import ControlReference
+from control_reference import ControlReference
 
 # llamado a la instancia de la base de datos
 from firestore import db, firestore

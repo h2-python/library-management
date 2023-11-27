@@ -1,5 +1,5 @@
 from flet import *
-from controls import ControlReference
+from control_reference import ControlReference
 
 # componentes requeridos para este componente: EditBookForm
 from Components.EditButton import EditButton
