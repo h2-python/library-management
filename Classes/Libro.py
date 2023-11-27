@@ -14,7 +14,7 @@ class Libro:
         self.ISBN = None
 
     def __dir__(self) -> Iterable[str]:
-        [
+        return [
             "titulo",
             "autor",
             "descripcion",
