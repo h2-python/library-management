@@ -58,7 +58,7 @@ def main(page: ft.Page):
         top_view = page.views[-1]
         page.go(top_view.route)
 
-    # cuando cambie la ruta se ejecuta estan funciones
+    # when the route changes, these functions are executed
     page.on_route_change = route_change
     page.on_view_pop = view_pop
     page.go(page.route)
