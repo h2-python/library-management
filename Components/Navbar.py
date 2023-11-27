@@ -1,10 +1,7 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -14,7 +11,7 @@ class AppNavbar(UserControl):
         self.page = page
 
     def app_navbar_instance(self):
-        add_control_reference("AppNavBar", self)
+        ControlReference.add_control_reference("AppNavBar", self)
 
     def app_button(self, text: str):
         return ElevatedButton(text=text)

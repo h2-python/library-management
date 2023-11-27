@@ -1,15 +1,12 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 # componentes requeridos para este componente: AddBookForm
 from Components.AddButton import AddButton
 
 # from Components.AddButtonState import AddButtonState
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -20,7 +17,7 @@ class AddBookForm(UserControl):
 
     # añadimos el componente al controlador
     def add_book_form_instance(self):
-        add_control_reference("AddBookForm", self)
+        ControlReference.add_control_reference("AddBookForm", self)
 
     # header del componente
     def form_header(self):

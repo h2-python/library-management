@@ -1,8 +1,5 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 # modelos requeridos para este componente: EditButton
 from Classes.Libro import Libro
@@ -10,7 +7,7 @@ from Classes.Libro import Libro
 # stores requeridas para este componente: EditButton
 from Store.BooksStore import BookStore
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 def get_input_data(e):
@@ -54,7 +51,7 @@ class EditButton(UserControl):
         self.page = page
 
     def edit_button_instance(self):
-        add_control_reference("EditButton", self)
+        ControlReference.add_control_reference("EditButton", self)
 
     def build(self):
         self.edit_button_instance()

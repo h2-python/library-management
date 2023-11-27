@@ -1,13 +1,10 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 # componentes requeridos para esta vista: AddBook
 from Components.AddBookForm import AddBookForm
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -18,7 +15,7 @@ class AddBookView(UserControl):
 
     # añadimos vista al controlador
     def add_book_view_instance(self):
-        add_control_reference("AddBookView", self)
+        ControlReference.add_control_reference("AddBookView", self)
 
     def build(self):
         self.add_book_view_instance()

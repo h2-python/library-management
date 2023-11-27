@@ -1,8 +1,5 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 # componentes requeridos para esta vista: Home
 from Components.Navbar import AppNavbar
@@ -10,7 +7,7 @@ from Components.SearchInput import SearchInput
 from Components.BooksTable import BooksTable
 from Store.BooksStore import BookStore
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -21,7 +18,7 @@ class HomeView(UserControl):
 
     # añadimos vista al controlador
     def home_view_instance(self):
-        add_control_reference("HomeView", self)
+        ControlReference.add_control_reference("HomeView", self)
 
     def add_book(self, e):
         BookStore["state"]["book_state"] = "ADD"

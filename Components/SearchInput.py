@@ -1,10 +1,7 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -14,7 +11,7 @@ class SearchInput(UserControl):
         self.page = page
 
     def search_input_instance(self):
-        add_control_reference("SearchInput", self)
+        ControlReference.add_control_reference("SearchInput", self)
 
     def filter_books_table(self, e):
         for key, value in control_map.items():

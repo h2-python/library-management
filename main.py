@@ -6,10 +6,7 @@ from Views.AddBook import AddBookView
 from Views.EditBook import EditBookView
 from Views.ViewBook import ViewBookView
 
-from controls import (
-    add_control_reference,
-)
-
+from controls import ControlReference
 
 def salir(page):
     page.window_close()
@@ -22,7 +19,7 @@ def main(page: ft.Page):
     page.theme_mode = "dark"
 
     # agrega la pagina a un controlador general
-    add_control_reference("page", page)
+    ControlReference.add_control_reference("page", page)
 
     # El navbar de la Aplicación
     bar = ft.AppBar(

@@ -1,8 +1,5 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 #  lladamo al store de libros
 from Store.BooksStore import BookStore
@@ -11,7 +8,7 @@ from Store.BooksStore import BookStore
 from Classes.Libro import Libro
 
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 def close_dlg(e=None):
@@ -54,7 +51,7 @@ class DeleteButton(UserControl):
         self.page = page
 
     def delete_button_instance(self):
-        add_control_reference("DeleteButton", self)
+        ControlReference.add_control_reference("DeleteButton", self)
 
     def build(self):
         self.delete_button_instance()

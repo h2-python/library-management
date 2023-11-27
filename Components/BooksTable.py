@@ -1,8 +1,5 @@
 from flet import *
-from controls import (
-    add_control_reference,
-    return_control_reference,
-)
+from controls import ControlReference
 
 # llamado a la instancia de la base de datos
 from firestore import db, firestore
@@ -10,7 +7,7 @@ from firestore import db, firestore
 # llamado al store de libros (un diccionario principal para manejar información de los libros entre componentes de manera centralizada)
 from Store.BooksStore import BookStore
 
-control_map = return_control_reference()
+control_map = ControlReference.return_control_reference()
 
 
 # clase principal
@@ -21,7 +18,7 @@ class BooksTable(UserControl):
         super().__init__()
 
     def books_table_instance(self):
-        add_control_reference("BooksTable", self)
+        ControlReference.add_control_reference("BooksTable", self)
 
     def view_book(self, id):
         BookStore["state"]["bookSelected"] = id
