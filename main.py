@@ -44,11 +44,11 @@ def main(page: ft.Page):
 
         page.views.append(R2V.get_view4route(routes.ROOT_PATH, bar)) # Home view
         
-        if route == routes.ADD_BOOK_PATH:
+        if route.route == routes.ADD_BOOK_PATH:
             page.views.append(R2V.get_view4route(routes.ADD_BOOK_PATH, bar)) # Add book view
-        elif route == routes.EDIT_BOOK_PATH:
+        elif route.route == routes.EDIT_BOOK_PATH:
             page.views.append(R2V.get_view4route(routes.EDIT_BOOK_PATH, bar)) # Edit book view
-        elif route == routes.VIEW_BOOK_PATH:
+        elif route.route == routes.VIEW_BOOK_PATH:
             page.views.append(R2V.get_view4route(routes.VIEW_BOOK_PATH, bar)) # View book view
         
         page.update() # Refresh the page with the new view
